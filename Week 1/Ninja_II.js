@@ -1,21 +1,22 @@
 function Ninja(name){
+    var speed = 3;
+    var strength = 3;
+
     this.name = name;
     this.health = 100;
-    let speed = 3;
-    let strength = 3;
 
-    this.kick = function(ninja_kicked){
-        const damage_amount = strength * 5;
-        ninja_kicked.health -= damage_amount;
-        console.log(ninja_kicked.name + " was kicked by " + this.name + "and lost" + damage_amount + "health");
-        return this;
+    this.showStats = function () {
+        console.log("My ninja name is " + this.name + "!");
+        console.log("My strength is " + strength + "!");
+        console.log("My speed is " + speed + "!");
+        console.log("My health is " + this.health + "!");
+        return this
     }
 
-    this.showStats = function() {
-        console.log("My ninja name is " + this.name + "!");
-        console.log("My strength is " + this.strength + "!");
-        console.log("My speed is " + this.speed + "!");
-        console.log("My speed is " + this.health + "!");
+    this.kick = function(ninja_kicked){
+        const damage_amount = strength * 15;
+        ninja_kicked.health -= damage_amount;
+        console.log(ninja_kicked.name + " was kicked by " + this.name + "and lost " + damage_amount + " health");
         return this;
     }
 }
@@ -40,8 +41,8 @@ Ninja.prototype.punch = function(ninja_punched){
 // ninja1.sayName();
 // ninja1.showStats();
 
-const blueNinja = new Ninja("Goemon");
-const redNinja = new Ninja("Bill Gates");
+var blueNinja = new Ninja("Goemon");
+var redNinja = new Ninja("Bill Gates");
 blueNinja.sayName();
 redNinja.sayName();
 
