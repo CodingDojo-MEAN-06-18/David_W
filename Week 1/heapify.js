@@ -9,20 +9,20 @@ function heapify(arr){
 
     if (arr.length > 0) {
         if (arr.length > 3) { // gurantees their were 3 numbers to start in the array atleast
-            for (let index = arr.length - 1; index > 0; index--){ //7
+            for (var index = arr.length - 1; index > 0; index--){ //7
                 if (arr[index] === undefined) {
                     heap = arr;
                     return heap;
                 }
-                let parent_index = Math.trunc(index / 2); 
-                let parent = arr[parent_index]; 
-                let child = arr[index]; 
-                let child_index = index; 
-                console.log("Parent_Index:",parent_index,"Parent Value:", parent)
-                console.log("Child_Index:",child_index,"Child Value:", child)
-                console.log("Index:", index);
-                console.log("Current Array:", arr);
-                console.log("");
+                var parent_index = Math.trunc(index / 2); 
+                var parent = arr[parent_index]; 
+                var child = arr[index]; 
+                var child_index = index; 
+                // console.log("Parent_Index:",parent_index,"Parent Value:", parent)
+                // console.log("Child_Index:",child_index,"Child Value:", child)
+                // console.log("Index:", index);
+                // console.log("Current Array:", arr);
+                // console.log("");
 
                 while (child < parent) {
                     arr[parent_index] = child
