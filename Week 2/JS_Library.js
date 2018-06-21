@@ -25,20 +25,28 @@ function each(arr, callback) {
             array[index] = callback(array[index]);
         }
     },
-    find: function(array, test, callback) {
-
-        // find_.find(list, predicate, [context]) Alias: detect 
-        // Looks through each value in the list, returning the first one that passes a 
-        // truth test (predicate), or undefined if no value passes the test. The function 
-        // returns as soon as it finds an acceptable element, and doesn't traverse the entire 
-        // list. predicate is transformed through iteratee to facilitate shorthand syntaxes.
-
-
-
-
+    find: function(array, predicate, callback) {
+        for (index = 0; index < array.length; index++ ){
+            var new_predicate = callback(array[index]);
+            if (predicate = new_predicate){
+                return array[index];
+            }
+        }
+        return undefined;
     },
-    filter: function() { 
-      // code here;
+    filter: function(array, predicate, callback) {
+        var passed = [];
+        for (index = 0; index < array.length; index++ ){
+            var new_predicate = callback(array[index]);
+            if (predicate = new_predicate){
+                passed.push(array[index]);
+            }
+        }
+        if (passed){
+            return passed;
+        } else {
+            return undefined;
+        }
     },
     reject: function() { 
       // code here;
