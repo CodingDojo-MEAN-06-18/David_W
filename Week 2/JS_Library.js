@@ -25,20 +25,20 @@ function each(arr, callback) {
             array[index] = callback(array[index]);
         }
     },
-    find: function(array, predicate, callback) {
+    find: function(array, callback) {
+        var test_array = []
         for (index = 0; index < array.length; index++ ){
-            var new_predicate = callback(array[index]);
-            if (predicate = new_predicate){
+            test_array[index] = callback(array[index]);
+            if (predicate = test_array[index]){
                 return array[index];
             }
         }
         return undefined;
     },
-    filter: function(array, predicate, callback) {
+    filter: function(array, callback) {
         var passed = [];
         for (index = 0; index < array.length; index++ ){
-            var new_predicate = callback(array[index]);
-            if (predicate = new_predicate){
+            if (callback(array[index])) {
                 passed.push(array[index]);
             }
         }
@@ -48,7 +48,7 @@ function each(arr, callback) {
             return undefined;
         }
     },
-    reject: function(array, predicate, callback) {
+    reject: function(array, callback) {
         var not_passed = [];
         for (index = 0; index < array.length; index++ ){
             var new_predicate = callback(array[index]);
@@ -63,8 +63,7 @@ function each(arr, callback) {
         }
     }
 }
-
- var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
 console.log(evens); // if things are working right, this will return [2,4,6].
 
   
