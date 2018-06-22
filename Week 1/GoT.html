@@ -31,70 +31,44 @@
     <div id="House_Baratheon">
         <img src="gameofthrones/baratheon.png" alt="Baratheon Image">
     </div>
-    <div>
-        <button id="clicked">click me</button>
-        <button id="try">try me</button>
-    </div>
 
     <script type="text/javascript">
-			$(document).ready(function(){
-                function $Dojo(id) {
-                    this.myId = document.getElementById(id);
-                    this.click = function (callback) {
-                        this.myId.addEventListener("click", callback);
-                    };
-
-                    // $('button').hover(function(){
-                    // console.log("clicked")
-                    // });	
-
-                    this.hover = function (hoverin, hoverout) {
-                        this.myId.addEventListener("mouseover", hoverin);
-                        this.myId.addEventListener("mouseout", hoverout);
-                    };
-                    return this;
-                }
-                $Dojo("clicked").click(function() { console.log("The button was clicked!") });
-                $Dojo("try").hover(function() { console.log("The button was hovered on!") });
-
-
+        $(document).ready(function(){
+            $('#House_Stark').on("click", function() {
+                let $container = $( "body.div" ).append(function() {
+                    $.get("https://anapioficeandfire.com/api/houses/362", getHouses)
+                    return $( this ).contents();
+                });
             });
-        // $(document).ready(function(){
-        //     $('#House_Stark').on("click", function() {
-        //         let $container = $( "body.div" ).append(function() {
-        //             $.get("https://anapioficeandfire.com/api/houses/362", getHouses)
-        //             return $( this ).contents();
-        //         });
-        //     });
-        //     $('#House_Targaryen').on("click", function() {
-        //         let $container = $( "body.div" ).replaceWith(function() {
-        //         $.get("https://anapioficeandfire.com/api/houses/378", getHouses)
-        //             return $( this ).contents();
-        //         });
-        //     });
-        //     $('#House_Lannister').on("click", function() {
-        //         let $container = $( "body.div" ).replaceWith(function() {
-        //         $.get("https://anapioficeandfire.com/api/houses/230", getHouses)
-        //             return $( this ).contents();
-        //         });
-        //     });
-        //     $('#House_Baratheon').on("click", function() {
-        //         let $container = $( "body.div" ).replaceWith(function() {
-        //         $.get("https://anapioficeandfire.com/api/houses/16", getHouses)
-        //             return $( this ).contents();
-        //         });
-        //     });
+            $('#House_Targaryen').on("click", function() {
+                let $container = $( "body.div" ).replaceWith(function() {
+                $.get("https://anapioficeandfire.com/api/houses/378", getHouses)
+                    return $( this ).contents();
+                });
+            });
+            $('#House_Lannister').on("click", function() {
+                let $container = $( "body.div" ).replaceWith(function() {
+                $.get("https://anapioficeandfire.com/api/houses/230", getHouses)
+                    return $( this ).contents();
+                });
+            });
+            $('#House_Baratheon').on("click", function() {
+                let $container = $( "body.div" ).replaceWith(function() {
+                $.get("https://anapioficeandfire.com/api/houses/16", getHouses)
+                    return $( this ).contents();
+                });
+            });
             
-        //     Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
-        //     function getHouses(data) {
-        //         $('body').append('<div class="container">');
-        //         $('body').append('<p>' + "House Name: " + data.name + '</p>');
-        //         $('body').append('<p>' + "House Words: " + data.words + '</p>');
-        //         $('body').append('<p>' + "House Region: " + data.region + '</p>');
-        //         $('body').append('<p>' + "House Titles: " + data.titles + '</p>');
-        //         $('body').append('</div>');
-        //     }
-        // });  
+            // Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
+            function getHouses(data) {
+                $('body').append('<div class="container">');
+                $('body').append('<p>' + "House Name: " + data.name + '</p>');
+                $('body').append('<p>' + "House Words: " + data.words + '</p>');
+                $('body').append('<p>' + "House Region: " + data.region + '</p>');
+                $('body').append('<p>' + "House Titles: " + data.titles + '</p>');
+                $('body').append('</div>');
+            }
+        });  
     </script>
     </head>
 <body>
