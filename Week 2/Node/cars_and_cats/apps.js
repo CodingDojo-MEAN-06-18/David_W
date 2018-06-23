@@ -7,35 +7,34 @@ var server = http.createServer(function (request, response){
     // see what URL the clients are requesting:
     console.log('client request URL: ', request.url);
     // this is how we do routing:
-    if(request.url === '/cars') {
-        fs.readFile('cars.html', 'utf8', function (errors, contents){
+    if(request.url === '/') {
+        fs.readFile('./views/index.html', 'utf8', function (errors, contents){
+            response.writeHead(200, {'Content-Type': 'text/html'});
+            response.write(contents); 
+            response.end();
+        });
+    }
+    else if (request.url === '/cars') {
+        fs.readFile('./views/cars.html', 'utf8', function (errors, contents){
             response.writeHead(200, {'Content-Type': 'text/html'});
             response.write(contents); 
             response.end();
         });
     } 
     else if (request.url === "/cats") {
-        fs.readFile('cats.html', 'utf8', function (errors, contents){
+        fs.readFile('./views/cats.html', 'utf8', function (errors, contents){
             response.writeHead(200, {'Content-type': 'text/html'});
             response.write(contents); 
             response.end();
         });
    }
-    else if (request.url === "/cars/new") {
-         fs.readFile('add_car.html', 'utf8', function (errors, contents){
-             response.writeHead(200, {'Content-type': 'text/html'});
-             response.write(contents); 
-             response.end();
-         });
-    }
-    else if(request.url === '/cars/bmw'){
-        // notice we won't include the utf8 encoding
-        fs.readFile('./images/bmw.jpg', function(errors, contents){
-            response.writeHead(200, {'Content-type': 'image/jpg'});
-            response.write(contents);
-            response.end();
-        })
-      }
+   else if (request.url === "/cars/new") {
+    fs.readFile('./views/add_car.html', 'utf8', function (errors, contents){
+        response.writeHead(200, {'Content-type': 'text/html'});
+        response.write(contents); 
+        response.end();
+    });
+}
     // request didn't match anything:
     else {
         fs.readFile('error.html', 'utf8', function (errors, contents){
