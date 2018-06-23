@@ -28,6 +28,34 @@ var server = http.createServer(function (request, response){
             response.end();
         });
    }
+   else if (request.url === "/images/kitten.jpeg") {
+        fs.readFile('./images/kitten.jpeg', function (errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
+            response.write(contents); 
+            response.end();
+        });
+    }
+    else if (request.url === "/images/white.jpeg") {
+        fs.readFile('./images/white.jpeg', function (errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
+            response.write(contents); 
+            response.end();
+        });
+   }
+   else if (request.url === "/images/grey.jpeg") {
+        fs.readFile('./images/grey.jpeg', function (errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
+            response.write(contents); 
+            response.end();
+        });
+    }
+    else if (request.url === "/images/orange.jpeg") {
+        fs.readFile('./images/orange.jpeg', function (errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
+            response.write(contents); 
+            response.end();
+        });
+   }
    else if (request.url === "/cars/new") {
         fs.readFile('./views/add_car.html', 'utf8', function (errors, contents){
             response.writeHead(200, {'Content-type': 'text/html'});
