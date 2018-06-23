@@ -29,12 +29,40 @@ var server = http.createServer(function (request, response){
         });
    }
    else if (request.url === "/cars/new") {
-    fs.readFile('./views/add_car.html', 'utf8', function (errors, contents){
-        response.writeHead(200, {'Content-type': 'text/html'});
-        response.write(contents); 
-        response.end();
-    });
-}
+        fs.readFile('./views/add_car.html', 'utf8', function (errors, contents){
+            response.writeHead(200, {'Content-type': 'text/html'});
+            response.write(contents); 
+            response.end();
+        });
+    }
+    else if (request.url === "/images/bmw.jpeg") {
+        fs.readFile('./images/bmw.jpeg', function (errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
+            response.write(contents); 
+            response.end();
+        });
+   }
+   else if (request.url === "/images/honda.jpeg") {
+        fs.readFile('./images/honda.jpeg', function (errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
+            response.write(contents); 
+            response.end();
+        });
+    }
+    else if (request.url === "/images/range.jpeg") {
+        fs.readFile('./images/range.jpeg', function (errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
+            response.write(contents); 
+            response.end();
+        });
+   }
+   else if (request.url === "/images/tesla.jpeg") {
+        fs.readFile('./images/tesla.jpeg', function (errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
+            response.write(contents); 
+            response.end();
+        });
+    }
     // request didn't match anything:
     else {
         fs.readFile('error.html', 'utf8', function (errors, contents){
