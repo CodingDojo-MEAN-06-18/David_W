@@ -32,7 +32,7 @@
                 }
             }
             if (storageAvailable('localStorage')) {
-                alert("welcome back, your last info is below!")
+                alert("welcome back, your last session info is below!")
                 var last_result = localStorage.getItem('city');
                 console.log(last_result);
                 if(last_result){
@@ -40,7 +40,7 @@
                 }
             }
             else {
-                alert("you have not been here before")
+                alert("Welcome to my weather API Assignment!!!")
             }
             $('form').submit(function(element){
                 element.preventDefault();
