@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Api</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('form').submit(function (){
+                var apiKey = '527433346fce7eb6086579727f850b8d';
+                var city = $('input#city').val();
+                console.log(city);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Welcome to My Weather API Assignnment</h1>
+    <div id="weather">
+        <h4>Enter any city to display its current weather:</h4>
+        <form>
+            <label for='city'>City:
+                <input type='text' name='city' id='city'/>
+            </label>
+            <input type='submit' name='submit'/>
+        </form>
+        <div id="results"></div>
+    </div>
+</body>
+</html>
