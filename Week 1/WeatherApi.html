@@ -8,6 +8,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+            function storageAvailable(type) {
+                try {
+                    var storage = window[type],
+                        x = '__storage_test__';
+                    storage.setItem(x, x);
+                    storage.removeItem(x);
+                    return true;
+                }
+                catch(e) {
+                    return e instanceof DOMException && (
+                        // everything except Firefox
+                        e.code === 22 ||
+                        // Firefox
+                        e.code === 1014 ||
+                        // test name field too, because code might not be present
+                        // everything except Firefox
+                        e.name === 'QuotaExceededError' ||
+                        // Firefox
+                        e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+                        // acknowledge QuotaExceededError only if there's something already stored
+                        storage.length !== 0;
+                }
+            }
+            if (storageAvailable('localStorage')) {
+                // alert("storage is accessable")
+            // Yippee! We can use localStorage awesomeness
+            }
+            else {
+            // Too bad, no localStorage for us
+            }
             $('form').submit(function(){
                 var api_key = '527433346fce7eb6086579727f850b8d'; //my own personal api key for the open weather website
                 var city = $('input#city').val(); //creating the varibal of whatever city is typed everytime its submitted later
