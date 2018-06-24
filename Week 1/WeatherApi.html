@@ -7,12 +7,20 @@
     <title>Weather Api</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $('form').submit(function (){
-                var apiKey = '527433346fce7eb6086579727f850b8d';
-                var city = $('input#city').val();
-                console.log(city);
-            });
+        $(document).ready(function() {
+            $('form').submit(function(){
+                var api_key = '527433346fce7eb6086579727f850b8d'; //my own personal api key for the open weather website
+                var city = $('input#city').val(); //creating the varibal of whatever city is typed everytime its submitted later
+                $.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${api_key}`, function(results){ //searches the api on the webiste and starts a function to gather the resultults stored on the site
+                    console.log(results) //logs all the results of the city in the console log.
+                    var html = ''; //creates blank string primed for information from the api
+                    html += `<p> ${results['name']}: ${results['weather'][0]['description']} </p>`; // adds a paragraph with the citys name, the weather and weather description with the information coming from the results just recived from the api 
+                    html += `<p> Temperature: ${results['main']['temp']} F</p>`; //adds a paragraph with the tempature from the search 
+                    html += `<p> Coord: ${results['coord'].lat}, ${results['coord'].lon}` //adds a paragraph with the coordinates of the city searched 
+                    $('#results').html(html); // in the div results it changes the html with all the parapgraphs and information we just stored and will change not append the information each time a new search is made
+                }, 'jsonp');
+                return false; //this makes sure when the button is clicked only the information is obtained from the API and the browser does not change pages
+            })
         });
     </script>
 </head>
