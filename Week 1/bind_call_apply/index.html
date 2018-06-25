@@ -8,15 +8,33 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-        var customObject = {
-            name:'California, Eureka',
-            onClick:function(){
+        // var customObject = {
+        //     name:'California, Eureka', onClick:function(){
+        //         console.log("I've been clicked");
+        //         console.log(this.name);
+        //     }
+        // }
+        // var newObject = {
+        //     name:"West Virginia,  Montani semper liberi"
+        //     }
+
+        // $(document).ready(function(){
+        //     $('button').click(customObject.onClick.bind(newObject));
+        // });
+// our test object
+    var customObject = {
+        name:'California, Eureka',
+        onClick:function(myParam){
             console.log("I've been clicked");
+            console.log(myParam, "I've been passed by bind");
             console.log(this.name);
-            }
         }
-        // our behavior on click.
-        $('button').click(customObject.onClick);
+    }
+    // our behavior on click.
+    $(document).ready(function(){
+        $('button').click(customObject.onClick.bind(customObject,"Bind this argument!"));
+    });
+
     </script>
 </head>
 <body>
