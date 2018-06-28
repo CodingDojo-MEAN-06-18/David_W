@@ -37,6 +37,64 @@ app.get("/cats", function (request, response){
   response.render('cats', {cats: cats_array});
 })
 
+app.get("/cats/white", function (request, response){
+  // hard-coded user data
+  var white_array = [
+    {detail: "white"}, 
+    {detail: "green eyes"}, 
+    {detail: "grey mixed in"}, 
+    {detail: "likes to lay down alot"}, 
+];
+  response.render('details', {detail: white_array});
+})
+app.get("/cats/grey", function (request, response){
+  // hard-coded user data
+  var grey_array = [
+    {detail: "grey"}, 
+    {detail: "purple collar"}, 
+    {detail: "im sitting"}, 
+    {detail: "guess what im looking at?"}, 
+];
+  response.render('details', {detail: grey_array});
+})
+app.get("/cats/kitten", function (request, response){
+  // hard-coded user data
+  var kitten_array = [
+    {detail: "kitten"}, 
+    {detail: "blue eyes"}, 
+    {detail: "white mixed in"}, 
+    {detail: "arent i cute?"}, 
+];
+  response.render('details', {detail: kitten_array});
+})
+app.get("/cats/orange", function (request, response){
+  // hard-coded user data
+  var orange_array = [
+    {detail: "orange"}, 
+    {detail: "am i eating a candy cane?"}, 
+    {detail: "white mixed in"}, 
+    {detail: "likes to lay down alot"}, 
+];
+  response.render('details', {detail: orange_array});
+})
+
+app.get("/cars/bmw", function (request, response){
+  // hard-coded user data
+  response.render('details');
+})
+app.get("/cars/honda", function (request, response){
+  // hard-coded user data
+  response.render('details');
+})
+app.get("/cars/tesla", function (request, response){
+  // hard-coded user data
+  response.render('details');
+})
+app.get("/cars/range", function (request, response){
+  // hard-coded user data
+  response.render('details');
+})
+
 app.listen(8000, function() {
   console.log("listening on port 8000");
 });
