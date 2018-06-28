@@ -5,7 +5,8 @@
     <% for (var x in cars) { %>
         <h3>Car: <%= cars[x].name %></h3>
         <h4>Picture:</h4>
-        <img src=<%= cars[x].img_source %>>
+        <a href=/cars/<%= cars[x].name %>> <img src=<%= cars[x].img_source %>></a>
+        
         <hr>
     <% } %>
 </body>
