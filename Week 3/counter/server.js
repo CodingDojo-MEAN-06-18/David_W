@@ -8,27 +8,32 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 // static content
-app.use(express.static(path.join(__dirname, "./static")));
-// setting up ejs and our views folder
+// app.use(express.static(path.join(__dirname, "./static")));
+
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
+
 // root route to render the index.ejs view
 app.get('/', function(req, res) {
+    res.render("index", {count});
     // adds one to count everytime
     count += 1;
- res.render("index", {count});
 })
+
+// resets counter
 app.post('/reset', function(req, res) {
     // reset count to 0
     count = 0;
     res.redirect('/')
    })
 
+//route for adding 2 to count
 app.post('/count', function(req, res) {
     // only adds one since the route will be revisited and count a second time
     count += 1;
     res.redirect('/');
 })
+
 // tell the express app to listen on port 8000
 app.listen(8000, function() {
  console.log("listening on port 8000");
