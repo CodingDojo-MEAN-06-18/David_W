@@ -1,7 +1,15 @@
 <html>
     <link rel="stylesheet" href="my_css.css">
 <body>
-    <h2>HERE IS THE COUNT:</h2>
-        <h3><%= count %></h3>
+    <h2>HERE IS THE COUNT OF HOW MANY TIMES YOU HAVE VISITED THIS ROUTE:</h2>
+        <h2><%= count %></h2>
+    <h2>Press to add +2 to Count:</h2>
+    <form action="/count" method='post'>
+        <input type="submit" value='+2 to count'>
+    </form>
+    <h2>Press to Reset Count:</h2>
+    <form action="/reset" method='post'>
+        <input type="submit" value='Reset'>
+    </form>
 </body>
 </html>

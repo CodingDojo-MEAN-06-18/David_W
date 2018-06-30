@@ -14,14 +14,20 @@ app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 // root route to render the index.ejs view
 app.get('/', function(req, res) {
- res.render("index");
+    // adds one to count everytime
+    count += 1;
+ res.render("index", {count});
 })
-// post route for adding a user
+app.post('/reset', function(req, res) {
+    // reset count to 0
+    count = 0;
+    res.redirect('/')
+   })
+
 app.post('/count', function(req, res) {
- console.log(`Count is at: ${count}`);
- // This is where we would add the user to the database
- // Then redirect to the root route
- res.redirect('/');
+    // only adds one since the route will be revisited and count a second time
+    count += 1;
+    res.redirect('/');
 })
 // tell the express app to listen on port 8000
 app.listen(8000, function() {
