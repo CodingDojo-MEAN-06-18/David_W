@@ -17,6 +17,7 @@ app.get('/', function(req, res) {
     res.render("index");
 })
 
+// route for results from the form
 app.post('/result', function(req, res) {
     var results_req = req.body;
     var data = {
