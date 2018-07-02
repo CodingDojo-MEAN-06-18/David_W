@@ -1,5 +1,4 @@
 var session = require('express-session');
-var count = 0;
 var express = require("express");
 // path module -- try to figure out where and why we use this
 var path = require("path");
@@ -20,24 +19,33 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', path.join(__dirname, './../views'));
 app.set('view engine', 'ejs');
 
-// root route to render the index.ejs view
 app.get('/', function(req, res) {
     if (!req.session.number){
         req.session.number = Math.floor((Math.random() * 100) + 1);
-    }    
-    // console.log(`Random number is ${req.session.number}`);
-    res.render("index");
+        res.render("index");
+    } else {
+        var data = {
+            number: req.session.currentNumber,
+            color: req.session.color
+        }
+        console.log(`Random number is ${req.session.number}`);
+        res.render("result", {data: data});
+    }
 })
 
 // route for results from the form
 app.post('/result', function(req, res) {
     // console.log(req.session.input);
     if (req.session.number > req.body.input){
-        console.log("the number is higher");
+        req.session.color = "red";
+        req.session.currentNumber = req.body.input;
+        console.log("Too low");
         res.redirect('/')
 
     } else if (req.session.number < req.body.input){
-        console.log("the number is lower");
+        req.session.color = "green";
+        req.session.currentNumber = req.body.input;
+        console.log("Too high");
         res.redirect('/')
 
     } else {
