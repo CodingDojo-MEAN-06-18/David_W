@@ -1,3 +1,4 @@
+const session = require('express-session');
 var count = 0;
 var express = require("express");
 // path module -- try to figure out where and why we use this
@@ -5,6 +6,12 @@ var path = require("path");
 var app = express();
 var bodyParser = require('body-parser');
 
+const sessionConfig  = {
+    saveUninitialized: true,
+    resave: false,
+    name: 'session',
+    secret: 'thisIsSuperSekret'
+  };
 
 app.use(bodyParser.urlencoded({ extended: true }));
 // static content
