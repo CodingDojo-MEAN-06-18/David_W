@@ -1,3 +1,14 @@
+/* i can get all the data from each route i visit but i cant seem to return that data
+back to my index.ejs file to display without having to refresh the page. 
+
+once i figure this out im sure i can add buttons to change the counters and use recursion to
+loop through the data so i can get all the information needed but transfering the information without
+redirecting or rendering in different routes i havent figured out. 
+
+*/
+
+
+
 const axios = require('axios');
 var session = require('express-session');
 var express = require("express");
