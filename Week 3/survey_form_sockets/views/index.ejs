@@ -17,7 +17,6 @@
                     comment: $('#formComment').val()
                 });
 			});
-        	//display the emit response of the server called "updated_message" and "random_number"
 			socket.on('updated_message', function (data){
 			    $('#message').html("You emitted the following information to the server: " + JSON.stringify(data.response));
 			});
